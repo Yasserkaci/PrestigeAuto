@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow common build/dev paths just in case
+Disallow: /node_modules/
+Disallow: /src/
+
+Sitemap: https://www.prestigecompany.pl/sitemap.xml

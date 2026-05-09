@@ -58,7 +58,10 @@ const ImageGallery = () => {
       ref={sectionRef}
       className="relative w-full bg-[#050505] overflow-hidden flex items-center justify-center z-10 md:h-screen"
     >
-      {/* Gallery label */}
+      {/* Accessible heading for SEO + screen readers */}
+      <h2 className="sr-only">Gallery</h2>
+
+      {/* Visible gallery label */}
       <div className="absolute top-[8%] left-[5vw] flex items-center z-50">
         <span className="h-px w-8 bg-white/20 mr-4" />
         <p className="text-[10px] uppercase tracking-[0.5em] text-white/40 font-['Doto']">
@@ -68,11 +71,11 @@ const ImageGallery = () => {
 
       {/* Mobile: simple grid */}
       <div className="md:hidden w-full px-5 py-24 grid grid-cols-2 gap-2">
-        <img src="/pics/bm5.jpg" alt="Gallery 1" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm1.jpg" alt="Gallery 2" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm3.jpg" alt="Gallery 3" className="col-span-2 rounded w-full h-44 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm4.jpg" alt="Gallery 4" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm2.jpg" alt="Gallery 5" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <img src="/pics/bm5.jpg" alt="Gallery 1" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <img src="/pics/bm1.jpg" alt="Gallery 2" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <img src="/pics/bm3.jpg" alt="Gallery 3" loading="lazy" className="col-span-2 rounded w-full h-44 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <img src="/pics/bm4.jpg" alt="Gallery 4" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <img src="/pics/bm2.jpg" alt="Gallery 5" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
       </div>
 
       {/* Desktop: scroll-animated mosaic */}
@@ -80,27 +83,27 @@ const ImageGallery = () => {
 
         {/* bm1 - Top Left */}
         <div ref={bm1Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[0].style}>
-          <img src={IMAGES[0].src} alt={IMAGES[0].alt} className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src={IMAGES[0].src} alt={IMAGES[0].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </div>
 
         {/* bm2 - Right Vertical */}
         <div ref={bm2Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[1].style}>
-          <img src={IMAGES[1].src} alt={IMAGES[1].alt} className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src={IMAGES[1].src} alt={IMAGES[1].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </div>
 
         {/* bm3 - Center (expands on scroll) */}
         <div ref={bm3Ref} className="absolute border border-white/10 overflow-hidden shadow-2xl origin-center will-change-transform" style={IMAGES[2].style}>
-          <img ref={midRef} src={IMAGES[2].src} alt={IMAGES[2].alt} className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img ref={midRef} src={IMAGES[2].src} alt={IMAGES[2].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </div>
 
         {/* bm4 - Left Vertical */}
         <div ref={bm4Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[3].style}>
-          <img src={IMAGES[3].src} alt={IMAGES[3].alt} className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src={IMAGES[3].src} alt={IMAGES[3].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </div>
 
         {/* bm5 - Bottom Right */}
         <div ref={bm5Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[4].style}>
-          <img src={IMAGES[4].src} alt={IMAGES[4].alt} className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <img src={IMAGES[4].src} alt={IMAGES[4].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
         </div>
       </div>
     </section>

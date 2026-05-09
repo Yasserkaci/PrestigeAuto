@@ -47,6 +47,8 @@ export default function Footer() {
         .ft-brand img {
           height: 56px; width: auto; object-fit: contain;
           display: block;
+          filter: invert(1);
+          mix-blend-mode: screen;
         }
 
         .ft-tagline {
@@ -116,8 +118,8 @@ export default function Footer() {
           <div className="ft-top">
             {/* Brand */}
             <div className="ft-brand-col">
-              <a href="#top" className="ft-brand" aria-label="Prestige">
-                <img src="/logo.jpeg" alt="Prestige" />
+              <a href="#top" className="ft-brand" aria-label="Prestige Company">
+                <img src="/logo.jpeg" alt="Prestige Company" />
               </a>
               <p className="ft-tagline">
                 Precision engineered. Globally delivered.<br />Prestige in every mile.

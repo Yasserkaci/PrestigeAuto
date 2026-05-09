@@ -33,14 +33,20 @@ const LogoMarquee = () => {
     <section className="relative py-3 bg-black border-t border-white/5 overflow-hidden">
       <div className="flex overflow-hidden">
         <div ref={marqueeRef} className="flex whitespace-nowrap gap-32 items-center py-4">
-          {[...LOGOS, ...LOGOS].map((file, i) => (
-            <img
-              key={i}
-              src={`/${file}`}
-              alt="Car brand logo"
-              className="h-12 md:h-16 w-auto object-contain hover:opacity-100 transition-opacity duration-700 hover:grayscale-0 cursor-pointer"
-            />
-          ))}
+          {[...LOGOS, ...LOGOS].map((file, i) => {
+            const brand = file.split('.')[0]
+              .replace('volk', 'volkswagen')
+              .replace('mer', 'mercedes-benz');
+            return (
+              <img
+                key={i}
+                src={`/${file}`}
+                alt={`${brand} logo`}
+                loading="lazy"
+                className="h-12 md:h-16 w-auto object-contain hover:opacity-100 transition-opacity duration-700 hover:grayscale-0 cursor-pointer"
+              />
+            );
+          })}
         </div>
       </div>
       <div className="absolute inset-y-0 left-0 w-40 bg-linear-to-r from-black to-transparent z-10 pointer-events-none" />

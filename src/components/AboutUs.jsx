@@ -182,15 +182,15 @@ export default function AboutUs() {
 
       <section id="about" className="ab-section" ref={containerRef}>
         <div className="ab-inner">
-          <div className="ab-section-label">
+          <h2 className="ab-section-label">
             <span>About Us</span>
-          </div>
+          </h2>
 
           {sections.map((item, i) => (
             <div key={i} className={`ab-row${i % 2 !== 0 ? ' ab-row--reverse' : ''}`}>
               {/* Image */}
               <div className="ab-img-wrap">
-                <img src={item.img} alt={item.title} className="ab-img" />
+                <img src={item.img} alt={item.title.replace('\n', ' ')} loading="lazy" className="ab-img" />
                 <div className="ab-img-num" aria-hidden="true">{item.index}</div>
               </div>
 

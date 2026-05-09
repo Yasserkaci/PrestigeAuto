@@ -5,6 +5,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { LogoMarquee } from './components/LogoMarquee'
 import ImageGallery from './components/ImageGallery'
 import AboutUs from './components/AboutUs'
+import CarsGallery from './components/CarsGallery'
 import ContactSection from './components/Contact'
 import Location from './components/Location'
 import Footer from './components/Footer'
@@ -14,6 +15,7 @@ gsap.registerPlugin(TextPlugin);
 const NAV_ITEMS = [
   { label: 'Gallery',  href: '#gallery'  },
   { label: 'About',    href: '#about'    },
+  { label: 'Fleet',    href: '#cars'     },
   { label: 'Location', href: '#location' },
   { label: 'Contact',  href: '#contact'  },
 ];
@@ -96,7 +98,11 @@ function App() {
               style={{ clipPath: CUSTOM_CLIP }}
             >
               <a href="#top" aria-label="Home" className="flex items-center">
-                <img src="/logo.jpeg" alt="Prestige" className="h-8 w-auto object-contain" />
+                <img
+                  src="/logo.jpeg"
+                  alt="Prestige Company"
+                  className="h-8 w-auto object-contain invert mix-blend-screen"
+                />
               </a>
               <nav className="hidden md:flex space-x-10">
                 {NAV_ITEMS.map((item) => (
@@ -160,7 +166,11 @@ function App() {
             Prestige Company // {new Date().getFullYear()} Collection
           </h2>
           <div className="flex items-baseline">
-            <h1 ref={typingTextRef} className="text-white text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] min-h-[1em]" />
+            <h1
+              ref={typingTextRef}
+              aria-label="Prestige in Every Mile — Luxury Car Rental and International Export"
+              className="text-white text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] min-h-[1em]"
+            />
             <span className="inline-block w-1 h-[0.8em] bg-white ml-2 animate-pulse" />
           </div>
           <p ref={subtextRef} className="text-white mt-6 text-[11px] tracking-[0.2em] uppercase opacity-0">
@@ -191,11 +201,14 @@ function App() {
         </div>
       </div>
 
-      <LogoMarquee />
-      <ImageGallery />
-      <AboutUs />
-      <Location />
-      <ContactSection />
+      <main>
+        <LogoMarquee />
+        <ImageGallery />
+        <AboutUs />
+        <CarsGallery />
+        <Location />
+        <ContactSection />
+      </main>
       <Footer />
     </>
   );
