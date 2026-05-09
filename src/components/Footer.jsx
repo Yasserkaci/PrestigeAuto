@@ -40,15 +40,13 @@ export default function Footer() {
         }
 
         .ft-brand {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 30px; letter-spacing: 0.1em; color: #e4dfd6;
-          display: flex; align-items: center; gap: 8px;
+          display: flex; align-items: center;
           margin-bottom: 16px;
         }
 
-        .ft-brand-dot {
-          width: 6px; height: 6px; border-radius: 50%;
-          background: #c9a84c; display: inline-block; flex-shrink: 0;
+        .ft-brand img {
+          height: 56px; width: auto; object-fit: contain;
+          display: block;
         }
 
         .ft-tagline {
@@ -118,9 +116,9 @@ export default function Footer() {
           <div className="ft-top">
             {/* Brand */}
             <div className="ft-brand-col">
-              <div className="ft-brand">
-                PRESTIGE <span className="ft-brand-dot" />
-              </div>
+              <a href="#top" className="ft-brand" aria-label="Prestige">
+                <img src="/logo.jpeg" alt="Prestige" />
+              </a>
               <p className="ft-tagline">
                 Precision engineered. Globally delivered.<br />Prestige in every mile.
               </p>
@@ -191,7 +189,7 @@ export default function Footer() {
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-label">Email</span>
-                <span className="ft-contact-value">byasserkaci@gmail.com</span>
+                <span className="ft-contact-value">office.prestigecompany@gmail.com</span>
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-label">Address</span>

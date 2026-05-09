@@ -6,7 +6,7 @@ import { Car, Phone, Mail, Clock, AlertTriangle, Check } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_NUMBER = "48739690668";
-const EMAIL_ADDRESS = "byasserkaci@gmail.com";
+const EMAIL_ADDRESS = "office.prestigecompany@gmail.com";
 
 export default function ContactSection() {
   const sectionRef = useRef(null);

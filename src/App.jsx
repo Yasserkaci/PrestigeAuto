@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from "gsap";
-import { MessageCircle, Trophy, ChevronRight, Menu, X } from 'lucide-react';
+import { MessageCircle, ChevronRight, Menu, X } from 'lucide-react';
 import { TextPlugin } from "gsap/TextPlugin";
 import { LogoMarquee } from './components/LogoMarquee'
 import ImageGallery from './components/ImageGallery'
@@ -95,8 +95,8 @@ function App() {
               className="w-full bg-[#111111]/95 backdrop-blur-xl flex items-center justify-between px-4 md:px-8 py-2 h-15"
               style={{ clipPath: CUSTOM_CLIP }}
             >
-              <a href="#top" className="text-white" aria-label="Home">
-                <Trophy size={20} />
+              <a href="#top" aria-label="Home" className="flex items-center">
+                <img src="/logo.jpeg" alt="Prestige" className="h-8 w-auto object-contain" />
               </a>
               <nav className="hidden md:flex space-x-10">
                 {NAV_ITEMS.map((item) => (
@@ -170,13 +170,14 @@ function App() {
 
         {/* CTA Button — relative flow on mobile, absolute bottom-center on desktop */}
         <div className="relative md:absolute md:inset-0 z-30 flex justify-center pt-10 pb-16 md:pt-0 md:pb-0 md:items-end md:py-[7vw] pointer-events-none">
-          <button
+          <a
             ref={btnRef}
+            href="#about"
             className="pointer-events-auto px-6 md:px-8 py-3 border border-white/60 bg-white/20 backdrop-blur-md text-white text-[10px] uppercase tracking-[0.4em] flex items-center gap-4 hover:bg-white hover:text-black transition-all duration-500 group"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)" }}
           >
             Explore Fleet <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </div>
 
         {/* Specs — desktop only */}
