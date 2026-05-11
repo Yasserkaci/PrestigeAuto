@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -69,41 +70,51 @@ const ImageGallery = () => {
         </p>
       </div>
 
-      {/* Mobile: simple grid */}
+      {/* Mobile: simple grid — every tile links to /gallery */}
       <div className="md:hidden w-full px-5 py-24 grid grid-cols-2 gap-2">
-        <img src="/pics/bm5.jpg" alt="Gallery 1" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm1.jpg" alt="Gallery 2" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm3.jpg" alt="Gallery 3" loading="lazy" className="col-span-2 rounded w-full h-44 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm4.jpg" alt="Gallery 4" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-        <img src="/pics/bm2.jpg" alt="Gallery 5" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+        <Link to="/gallery"><img src="/pics/bm5.jpg" alt="Gallery 1" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" /></Link>
+        <Link to="/gallery"><img src="/pics/bm1.jpg" alt="Gallery 2" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" /></Link>
+        <Link to="/gallery" className="col-span-2"><img src="/pics/bm3.jpg" alt="Gallery 3" loading="lazy" className="rounded w-full h-44 object-cover grayscale hover:grayscale-0 transition-all duration-700" /></Link>
+        <Link to="/gallery"><img src="/pics/bm4.jpg" alt="Gallery 4" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" /></Link>
+        <Link to="/gallery"><img src="/pics/bm2.jpg" alt="Gallery 5" loading="lazy" className="rounded w-full h-36 object-cover grayscale hover:grayscale-0 transition-all duration-700" /></Link>
       </div>
 
-      {/* Desktop: scroll-animated mosaic */}
+      {/* Desktop: scroll-animated mosaic — every tile links to /gallery */}
       <div className="hidden md:block relative w-[85vw] max-w-275 m-auto aspect-video">
 
         {/* bm1 - Top Left */}
         <div ref={bm1Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[0].style}>
-          <img src={IMAGES[0].src} alt={IMAGES[0].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <Link to="/gallery" className="block w-full h-full cursor-pointer">
+            <img src={IMAGES[0].src} alt={IMAGES[0].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          </Link>
         </div>
 
         {/* bm2 - Right Vertical */}
         <div ref={bm2Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[1].style}>
-          <img src={IMAGES[1].src} alt={IMAGES[1].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <Link to="/gallery" className="block w-full h-full cursor-pointer">
+            <img src={IMAGES[1].src} alt={IMAGES[1].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          </Link>
         </div>
 
         {/* bm3 - Center (expands on scroll) */}
         <div ref={bm3Ref} className="absolute border border-white/10 overflow-hidden shadow-2xl origin-center will-change-transform" style={IMAGES[2].style}>
-          <img ref={midRef} src={IMAGES[2].src} alt={IMAGES[2].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <Link to="/gallery" className="block w-full h-full cursor-pointer">
+            <img ref={midRef} src={IMAGES[2].src} alt={IMAGES[2].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          </Link>
         </div>
 
         {/* bm4 - Left Vertical */}
         <div ref={bm4Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[3].style}>
-          <img src={IMAGES[3].src} alt={IMAGES[3].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <Link to="/gallery" className="block w-full h-full cursor-pointer">
+            <img src={IMAGES[3].src} alt={IMAGES[3].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          </Link>
         </div>
 
         {/* bm5 - Bottom Right */}
         <div ref={bm5Ref} className="absolute overflow-hidden shadow-xl" style={IMAGES[4].style}>
-          <img src={IMAGES[4].src} alt={IMAGES[4].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          <Link to="/gallery" className="block w-full h-full cursor-pointer">
+            <img src={IMAGES[4].src} alt={IMAGES[4].alt} loading="lazy" className="w-full h-full rounded object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+          </Link>
         </div>
       </div>
     </section>

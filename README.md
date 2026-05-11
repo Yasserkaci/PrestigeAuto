@@ -38,7 +38,7 @@ prestige/
 │   ├── about/              # AboutUs section images (about1–4.jpg)
 │   ├── pics/               # Gallery section images (bm1–5.jpg)
 │   ├── bg.mp4 / bg.mov     # Hero background video (desktop only)
-│   ├── logo.jpeg           # Brand logo (header + footer)
+│   ├── logo.png           # Brand logo (header + footer)
 │   ├── audi.svg, bmw.png, mer.png, volk.svg   # Logo marquee assets
 │   └── favicon.svg
 │

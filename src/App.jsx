@@ -9,6 +9,7 @@ import CarsGallery from './components/CarsGallery'
 import ContactSection from './components/Contact'
 import Location from './components/Location'
 import Footer from './components/Footer'
+import { useSiteContent } from './lib/useSiteContent'
 
 gsap.registerPlugin(TextPlugin);
 
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
 const CUSTOM_CLIP = "polygon(0% 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px))";
 
 function App() {
+  const t = useSiteContent();
   const headerRef = useRef(null);
   const videoRef = useRef(null);
   const typingTextRef = useRef(null);
@@ -30,6 +32,8 @@ function App() {
   const btnRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+
+  const heroTitle = t('hero.title', 'PRESTIGE IN EVERY MILE.');
 
   const handleVideoEnd = () => {
     const tl = gsap.timeline();
@@ -39,7 +43,7 @@ function App() {
 
     tl.to(typingTextRef.current, {
       duration: 0.3,
-      text: { value: "PRESTIGE IN EVERY MILE.", delimiter: "" },
+      text: { value: heroTitle, delimiter: "" },
       ease: "none",
     });
 
@@ -99,9 +103,9 @@ function App() {
             >
               <a href="#top" aria-label="Home" className="flex items-center">
                 <img
-                  src="/logo.jpeg"
+                  src="/logo.png"
                   alt="Prestige Company"
-                  className="h-8 w-auto object-contain invert mix-blend-screen"
+                  className="h-10 w-auto object-contain"
                 />
               </a>
               <nav className="hidden md:flex space-x-10">
@@ -163,18 +167,18 @@ function App() {
         {/* Hero Text — relative flow on mobile, absolute on desktop */}
         <div className="relative md:absolute z-20 pt-32 md:pt-0 px-5 md:px-0 md:left-[5vw] md:top-[25%] max-w-full md:max-w-125 border-l border-white/10 md:pl-5">
           <h2 className="text-white text-[10px] tracking-[0.5em] uppercase opacity-40 mb-3">
-            Prestige Company // {new Date().getFullYear()} Collection
+            {t('hero.eyebrow', `Prestige Company // ${new Date().getFullYear()} Collection`)}
           </h2>
           <div className="flex items-baseline">
             <h1
               ref={typingTextRef}
-              aria-label="Prestige in Every Mile — Luxury Car Rental and International Export"
+              aria-label={heroTitle}
               className="text-white text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] min-h-[1em]"
             />
             <span className="inline-block w-1 h-[0.8em] bg-white ml-2 animate-pulse" />
           </div>
           <p ref={subtextRef} className="text-white mt-6 text-[11px] tracking-[0.2em] uppercase opacity-0">
-            Featuring the Skoda Fabia Monte Carlo. <br /> Premium rental and international export.
+            {t('hero.subtext', 'Featuring the Skoda Fabia Monte Carlo. Premium rental and international export.')}
           </p>
         </div>
 

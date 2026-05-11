@@ -6,6 +6,7 @@ import './index.css';
 import App from './App.jsx';
 import Login from './pages/Login.jsx';
 import Admin from './pages/Admin.jsx';
+import Gallery from './pages/Gallery.jsx';
 import { AuthProvider } from './lib/AuthContext.jsx';
 import ProtectedRoute from './lib/ProtectedRoute.jsx';
 
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/admin"

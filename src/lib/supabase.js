@@ -12,3 +12,8 @@ export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
 
 export const CARS_BUCKET = 'cars';
 export const CARS_TABLE = 'cars';
+
+export const GALLERY_BUCKET = 'gallery';
+export const GALLERY_TABLE = 'gallery_images';
+
+export const CONTENT_TABLE = 'site_content';
