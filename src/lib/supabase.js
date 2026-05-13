@@ -16,4 +16,9 @@ export const CARS_TABLE = 'cars';
 export const GALLERY_BUCKET = 'gallery';
 export const GALLERY_TABLE = 'gallery_images';
 
+export const TEAM_BUCKET = 'team';
+export const TEAM_TABLE = 'team_members';
+
+export const MESSAGES_TABLE = 'contact_messages';
+
 export const CONTENT_TABLE = 'site_content';

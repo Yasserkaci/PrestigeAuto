@@ -32,166 +32,132 @@ export default function Login() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap');
-
         .lg-wrap {
           min-height: 100vh;
-          background: #060606;
-          color: #e8e3da;
-          font-family: 'DM Sans', sans-serif;
+          background: #f9fafb;
+          color: #111827;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
           display: flex; align-items: center; justify-content: center;
-          padding: 32px 20px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .lg-orb {
-          position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          width: 700px; height: 700px;
-          background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 60%);
-          pointer-events: none; z-index: 0;
-        }
-
-        .lg-grid {
-          position: absolute; inset: 0;
-          background-image:
-            linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-          background-size: 60px 60px;
-          pointer-events: none; z-index: 0;
+          padding: 24px;
         }
 
         .lg-back {
-          position: absolute; top: 24px; left: 24px;
-          display: inline-flex; align-items: center; gap: 8px;
-          color: rgba(232,227,218,0.5); text-decoration: none;
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-          transition: color 0.2s;
-          z-index: 2;
+          position: absolute; top: 16px; left: 16px;
+          display: inline-flex; align-items: center; gap: 6px;
+          color: #4b5563; text-decoration: none;
+          font-size: 13px;
+          transition: color 0.15s;
         }
-        .lg-back:hover { color: #c9a84c; }
+        .lg-back:hover { color: #111827; }
 
         .lg-card {
-          position: relative; z-index: 1;
-          width: 100%; max-width: 420px;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(255,255,255,0.06);
-          padding: 48px 36px;
+          width: 100%; max-width: 400px;
+          background: #ffffff;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          padding: 32px 28px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
 
-        @media (max-width: 540px) { .lg-card { padding: 32px 22px; } }
+        @media (max-width: 540px) { .lg-card { padding: 24px 20px; } }
 
         .lg-eyebrow {
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
-          color: #c9a84c; margin-bottom: 12px;
-          display: flex; align-items: center; gap: 12px;
-        }
-        .lg-eyebrow::after {
-          content: ''; display: block; height: 1px; width: 32px;
-          background: #c9a84c; opacity: 0.5;
+          font-size: 12px;
+          color: #6b7280;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 6px;
         }
 
         .lg-heading {
-          font-family: 'Cormorant Garamond', serif;
-          font-weight: 300; font-size: 44px;
-          line-height: 1; letter-spacing: -0.01em;
-          color: #e8e3da;
+          font-size: 24px;
+          font-weight: 600;
+          color: #111827;
+          margin-bottom: 4px;
         }
-        .lg-heading em { font-style: italic; color: #c9a84c; }
+        .lg-heading em { font-style: normal; color: #2563eb; }
 
         .lg-sub {
-          font-size: 13px; color: rgba(232,227,218,0.45);
-          line-height: 1.6; margin-top: 12px; margin-bottom: 36px;
-          font-weight: 300;
+          font-size: 13px;
+          color: #6b7280;
+          line-height: 1.5;
+          margin-top: 4px;
+          margin-bottom: 24px;
         }
 
-        .lg-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+        .lg-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
 
         .lg-label {
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-          color: rgba(201,168,76,0.6);
+          font-size: 12px;
+          font-weight: 500;
+          color: #374151;
         }
 
         .lg-input-wrap { position: relative; }
 
         .lg-input-icon {
-          position: absolute; left: 14px; top: 50%;
+          position: absolute; left: 10px; top: 50%;
           transform: translateY(-50%);
-          color: rgba(201,168,76,0.55);
+          color: #9ca3af;
           pointer-events: none;
         }
 
         .lg-input {
           width: 100%;
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(255,255,255,0.08);
-          color: #e8e3da;
-          font-family: 'DM Sans', sans-serif;
+          background: #ffffff;
+          border: 1px solid #d1d5db;
+          border-radius: 4px;
+          color: #111827;
           font-size: 14px;
-          padding: 12px 14px 12px 42px;
+          padding: 8px 10px 8px 34px;
           outline: none;
-          transition: border-color 0.2s, background 0.2s;
+          transition: border-color 0.15s, box-shadow 0.15s;
         }
-        .lg-input::placeholder { color: rgba(232,227,218,0.25); }
+        .lg-input::placeholder { color: #9ca3af; }
         .lg-input:focus {
-          border-color: rgba(201,168,76,0.6);
-          background: rgba(201,168,76,0.04);
+          border-color: #2563eb;
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         .lg-btn {
-          position: relative;
           width: 100%;
-          padding: 14px 20px;
-          background: transparent;
-          border: 1px solid rgba(201,168,76,0.45);
-          color: #e8e3da;
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-          cursor: pointer; overflow: hidden;
-          transition: color 0.4s, border-color 0.4s;
-          margin-top: 8px;
+          padding: 10px 16px;
+          background: #2563eb;
+          border: 1px solid #2563eb;
+          border-radius: 4px;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: background 0.15s;
+          margin-top: 6px;
         }
-        .lg-btn::before {
-          content: ''; position: absolute; inset: 0; background: #c9a84c;
-          transform: translateX(-101%);
-          transition: transform 0.45s cubic-bezier(0.77,0,0.18,1);
-          z-index: 0;
-        }
-        .lg-btn:hover:not(:disabled)::before { transform: translateX(0); }
-        .lg-btn:hover:not(:disabled) { color: #060606; border-color: #c9a84c; }
-        .lg-btn:disabled { opacity: 0.5; cursor: wait; }
-        .lg-btn span { position: relative; z-index: 1; }
+        .lg-btn:hover:not(:disabled) { background: #1d4ed8; border-color: #1d4ed8; }
+        .lg-btn:disabled { opacity: 0.6; cursor: wait; }
 
         .lg-error {
-          margin-top: 18px;
-          padding: 10px 14px;
-          font-size: 12px;
-          color: rgba(220,140,140,0.95);
-          background: rgba(220,80,80,0.05);
-          border-left: 1px solid rgba(220,80,80,0.45);
-          display: flex; align-items: center; gap: 10px;
+          margin-top: 14px;
+          padding: 8px 12px;
+          border-radius: 4px;
+          font-size: 13px;
+          color: #b91c1c;
+          background: #fef2f2;
+          border: 1px solid #fecaca;
+          display: flex; align-items: center; gap: 8px;
         }
       `}</style>
 
       <div className="lg-wrap">
-        <div className="lg-grid" aria-hidden="true" />
-        <div className="lg-orb" aria-hidden="true" />
-
         <a href="/" className="lg-back">
           <ArrowLeft size={14} strokeWidth={1.5} />
           Back to site
         </a>
 
         <div className="lg-card">
-          <p className="lg-eyebrow">Restricted Access</p>
-          <h1 className="lg-heading">Admin <em>Login</em></h1>
+          <p className="lg-eyebrow">Admin</p>
+          <h1 className="lg-heading">Sign in</h1>
           <p className="lg-sub">
-            Sign in with your administrator credentials to manage the fleet.
+            Sign in with your administrator credentials to manage the site.
           </p>
 
           <form onSubmit={handleSubmit} noValidate>
@@ -230,7 +196,7 @@ export default function Login() {
             </div>
 
             <button type="submit" className="lg-btn" disabled={submitting}>
-              <span>{submitting ? 'Signing in…' : 'Sign in'}</span>
+              {submitting ? 'Signing in…' : 'Sign in'}
             </button>
 
             {error && (

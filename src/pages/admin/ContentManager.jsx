@@ -124,16 +124,16 @@ export default function ContentManager() {
       {loading && <div className="am-empty">Loading…</div>}
 
       {!loading && CONTENT_GROUPS.map((group) => (
-        <section key={group.section} style={{ marginBottom: 36 }}>
+        <section key={group.section} style={{ marginBottom: 28 }}>
           <h2 style={{
-            fontFamily: 'DM Mono, monospace',
-            fontSize: 11,
-            letterSpacing: '0.35em',
+            fontSize: 13,
+            fontWeight: 600,
+            color: '#374151',
             textTransform: 'uppercase',
-            color: 'rgba(232,227,218,0.5)',
-            marginBottom: 14,
+            letterSpacing: '0.04em',
+            marginBottom: 12,
           }}>
-            — {group.section}
+            {group.section}
           </h2>
 
           <div className="am-content-list">
@@ -181,11 +181,8 @@ export default function ContentManager() {
                         style={{
                           background: 'transparent',
                           border: 'none',
-                          color: 'rgba(232,227,218,0.35)',
-                          fontFamily: 'DM Mono, monospace',
-                          fontSize: 9,
-                          letterSpacing: '0.25em',
-                          textTransform: 'uppercase',
+                          color: '#6b7280',
+                          fontSize: 12,
                           cursor: 'pointer',
                           padding: 0,
                         }}
@@ -202,17 +199,19 @@ export default function ContentManager() {
       ))}
 
       <div style={{
-        marginTop: 28,
-        padding: 16,
-        border: '1px dashed rgba(255,255,255,0.06)',
-        fontSize: 12,
-        color: 'rgba(232,227,218,0.5)',
-        lineHeight: 1.7,
+        marginTop: 24,
+        padding: 14,
+        background: '#f3f4f6',
+        border: '1px solid #e5e7eb',
+        borderRadius: 6,
+        fontSize: 13,
+        color: '#4b5563',
+        lineHeight: 1.6,
       }}>
-        <strong style={{ color: '#c9a84c', letterSpacing: '0.15em', textTransform: 'uppercase', fontSize: 10, fontFamily: 'DM Mono, monospace' }}>
-          Tip
+        <strong style={{ color: '#111827', fontSize: 13 }}>
+          Tip:
         </strong>
-        {' '}— changes save individually and appear on the live site in real time
+        {' '}changes save individually and appear on the live site in real time
         thanks to a Supabase realtime subscription. There are {CONTENT_KEYS.length} editable
         fields across the site. Leave a field empty to fall back to its default.
       </div>

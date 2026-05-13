@@ -8,9 +8,9 @@ const MAPS_EMBED =
   "https://maps.google.com/maps?q=Zaciszna%2021%2F1%2C%2005-092%20Sadowa%2C%20Polska&t=&z=16&ie=UTF8&iwloc=&output=embed";
 
 const details = [
-  { label: "Address",      value: ["Zaciszna 21/1", "05-092 Sadowa, Polska"],            mono: false },
+  { label: "Address",      value: ["Zaciszna 1", "05-092 Sadowa, Polska"],            mono: false },
   { label: "Coordinates",  value: ["52.3580° N, 20.8510° E"],                            mono: true  },
-  { label: "Availability", value: ["Mon – Sat  ·  10:00 – 19:00", "By appointment only"], mono: false },
+  { label: "Availability", value: ["Mon – Sat  ·  10:00 – 19:00", "Always Welcomed"], mono: false },
 ];
 
 export default function Location() {

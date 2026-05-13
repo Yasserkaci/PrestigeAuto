@@ -5,6 +5,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { LogoMarquee } from './components/LogoMarquee'
 import ImageGallery from './components/ImageGallery'
 import AboutUs from './components/AboutUs'
+import Team from './components/Team'
 import CarsGallery from './components/CarsGallery'
 import ContactSection from './components/Contact'
 import Location from './components/Location'
@@ -16,6 +17,7 @@ gsap.registerPlugin(TextPlugin);
 const NAV_ITEMS = [
   { label: 'Gallery',  href: '#gallery'  },
   { label: 'About',    href: '#about'    },
+  { label: 'Team',     href: '#team'     },
   { label: 'Fleet',    href: '#cars'     },
   { label: 'Location', href: '#location' },
   { label: 'Contact',  href: '#contact'  },
@@ -98,7 +100,7 @@ function App() {
         <div ref={headerRef} className="fixed top-0 left-1/2 -translate-x-1/2 w-[95vw] md:w-[80vw] max-w-300 z-50">
           <div className="bg-white p-px" style={{ clipPath: CUSTOM_CLIP }}>
             <header
-              className="w-full bg-[#111111]/95 backdrop-blur-xl flex items-center justify-between px-4 md:px-8 py-2 h-15"
+              className="w-full bg-[#000] backdrop-blur-xl flex items-center justify-between px-4 md:px-8 py-2 h-15"
               style={{ clipPath: CUSTOM_CLIP }}
             >
               <a href="#top" aria-label="Home" className="flex items-center">
@@ -209,6 +211,7 @@ function App() {
         <LogoMarquee />
         <ImageGallery />
         <AboutUs />
+        <Team />
         <CarsGallery />
         <Location />
         <ContactSection />

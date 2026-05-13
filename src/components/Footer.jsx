@@ -189,7 +189,7 @@ export default function Footer() {
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-label">Email</span>
-                <span className="ft-contact-value">office.prestigecompany@gmail.com</span>
+                <span className="ft-contact-value">Office@prestigecompany.pl</span>
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-label">Address</span>

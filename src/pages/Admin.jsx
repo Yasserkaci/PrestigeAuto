@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, ArrowLeft, Car as CarIcon, Image as ImageIcon, Type } from 'lucide-react';
+import { LogOut, ArrowLeft, Car as CarIcon, Image as ImageIcon, Type, Users, Inbox } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../lib/AuthContext';
 
 import CarsManager from './admin/CarsManager';
 import GalleryManager from './admin/GalleryManager';
+import TeamManager from './admin/TeamManager';
+import MessagesManager from './admin/MessagesManager';
 import ContentManager from './admin/ContentManager';
 
 const TABS = [
-  { key: 'cars',    label: 'Cars',     icon: CarIcon  },
-  { key: 'gallery', label: 'Gallery',  icon: ImageIcon },
-  { key: 'content', label: 'Content',  icon: Type     },
+  { key: 'cars',     label: 'Cars',     icon: CarIcon   },
+  { key: 'gallery',  label: 'Gallery',  icon: ImageIcon },
+  { key: 'team',     label: 'Team',     icon: Users     },
+  { key: 'messages', label: 'Messages', icon: Inbox     },
+  { key: 'content',  label: 'Content',  icon: Type      },
 ];
 
 export default function Admin() {
@@ -27,91 +31,87 @@ export default function Admin() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap');
-
         .ad-wrap {
           min-height: 100vh;
-          background: #060606;
-          color: #e8e3da;
-          font-family: 'DM Sans', sans-serif;
-          padding: 32px 24px 80px;
+          background: #f9fafb;
+          color: #111827;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+          padding: 24px;
         }
-        @media (max-width: 640px) { .ad-wrap { padding: 24px 16px 60px; } }
+        @media (max-width: 640px) { .ad-wrap { padding: 16px; } }
 
         .ad-inner { max-width: 1200px; margin: 0 auto; }
 
         .ad-bar {
           display: flex; align-items: center; justify-content: space-between;
-          gap: 16px; padding-bottom: 24px;
-          border-bottom: 1px solid rgba(255,255,255,0.06);
-          margin-bottom: 28px;
+          gap: 16px; padding-bottom: 16px;
+          border-bottom: 1px solid #e5e7eb;
+          margin-bottom: 20px;
           flex-wrap: wrap;
         }
 
-        .ad-brand { display: flex; align-items: center; gap: 14px; }
+        .ad-brand { display: flex; align-items: center; gap: 12px; }
         .ad-brand-mark {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px; letter-spacing: 0.12em;
-          color: #e8e3da;
+          font-size: 18px;
+          font-weight: 600;
+          color: #111827;
         }
-        .ad-brand-mark span { color: #c9a84c; }
+        .ad-brand-mark span { color: #6b7280; font-weight: 400; }
 
         .ad-tag {
-          font-family: 'DM Mono', monospace;
-          font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
-          color: rgba(201,168,76,0.7);
-          padding: 4px 10px;
-          border: 1px solid rgba(201,168,76,0.3);
-          border-radius: 999px;
+          font-size: 11px;
+          color: #4b5563;
+          padding: 3px 8px;
+          background: #f3f4f6;
+          border: 1px solid #e5e7eb;
+          border-radius: 4px;
         }
 
         .ad-bar-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
         .ad-link {
           display: inline-flex; align-items: center; gap: 6px;
-          color: rgba(232,227,218,0.5); text-decoration: none;
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-          transition: color 0.2s;
+          color: #4b5563; text-decoration: none;
+          font-size: 13px;
+          transition: color 0.15s;
         }
-        .ad-link:hover { color: #c9a84c; }
+        .ad-link:hover { color: #111827; }
 
         .ad-signout {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 10px 14px;
-          background: transparent;
-          border: 1px solid rgba(255,255,255,0.1);
-          color: rgba(232,227,218,0.7);
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+          display: inline-flex; align-items: center; gap: 6px;
+          padding: 7px 12px;
+          background: #ffffff;
+          border: 1px solid #d1d5db;
+          border-radius: 4px;
+          color: #374151;
+          font-size: 13px;
           cursor: pointer;
-          transition: border-color 0.2s, color 0.2s;
+          transition: background 0.15s, border-color 0.15s;
         }
-        .ad-signout:hover { border-color: rgba(201,168,76,0.5); color: #c9a84c; }
+        .ad-signout:hover { background: #f9fafb; border-color: #9ca3af; }
 
         .ad-tabs {
-          display: flex; gap: 4px;
-          margin-bottom: 36px;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          display: flex; gap: 2px;
+          margin-bottom: 24px;
+          border-bottom: 1px solid #e5e7eb;
         }
 
         .ad-tab {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 14px 20px;
+          display: inline-flex; align-items: center; gap: 6px;
+          padding: 10px 14px;
           background: transparent;
           border: none;
           border-bottom: 2px solid transparent;
-          color: rgba(232,227,218,0.5);
-          font-family: 'DM Mono', monospace;
-          font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+          color: #6b7280;
+          font-size: 14px;
           cursor: pointer;
-          transition: color 0.2s, border-color 0.2s;
+          transition: color 0.15s, border-color 0.15s;
           margin-bottom: -1px;
         }
-        .ad-tab:hover { color: #e8e3da; }
+        .ad-tab:hover { color: #111827; }
         .ad-tab.active {
-          color: #c9a84c;
-          border-bottom-color: #c9a84c;
+          color: #2563eb;
+          border-bottom-color: #2563eb;
         }
       `}</style>
 
@@ -150,9 +150,11 @@ export default function Admin() {
             ))}
           </div>
 
-          {tab === 'cars'    && <CarsManager />}
-          {tab === 'gallery' && <GalleryManager />}
-          {tab === 'content' && <ContentManager />}
+          {tab === 'cars'     && <CarsManager />}
+          {tab === 'gallery'  && <GalleryManager />}
+          {tab === 'team'     && <TeamManager />}
+          {tab === 'messages' && <MessagesManager />}
+          {tab === 'content'  && <ContentManager />}
         </div>
       </div>
     </>
